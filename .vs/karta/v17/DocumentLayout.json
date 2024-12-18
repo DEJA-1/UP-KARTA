@@ -1,0 +1,74 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\allow\\source\\repos\\UP-KARTA\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6AA5D8B6-D934-4F00-8D35-2A268F3066CF}|karta\\karta.csproj|c:\\users\\allow\\source\\repos\\up-karta\\karta\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AA5D8B6-D934-4F00-8D35-2A268F3066CF}|karta\\karta.csproj|solutionrelative:karta\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AA5D8B6-D934-4F00-8D35-2A268F3066CF}|karta\\karta.csproj|c:\\users\\allow\\source\\repos\\up-karta\\karta\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6AA5D8B6-D934-4F00-8D35-2A268F3066CF}|karta\\karta.csproj|solutionrelative:karta\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AA5D8B6-D934-4F00-8D35-2A268F3066CF}|karta\\karta.csproj|c:\\users\\allow\\source\\repos\\up-karta\\karta\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AA5D8B6-D934-4F00-8D35-2A268F3066CF}|karta\\karta.csproj|solutionrelative:karta\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\allow\\source\\repos\\UP-KARTA\\karta\\Form1.cs",
+              "RelativeDocumentMoniker": "karta\\Form1.cs",
+              "ToolTip": "C:\\Users\\allow\\source\\repos\\UP-KARTA\\karta\\Form1.cs",
+              "RelativeToolTip": "karta\\Form1.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-18T17:15:53.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\allow\\source\\repos\\UP-KARTA\\karta\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "karta\\Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\allow\\source\\repos\\UP-KARTA\\karta\\Form1.Designer.cs",
+              "RelativeToolTip": "karta\\Form1.Designer.cs",
+              "ViewState": "AgIAALcAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-18T17:15:40.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Projekt]",
+              "DocumentMoniker": "C:\\Users\\allow\\source\\repos\\UP-KARTA\\karta\\Form1.cs",
+              "RelativeDocumentMoniker": "karta\\Form1.cs",
+              "ToolTip": "C:\\Users\\allow\\source\\repos\\UP-KARTA\\karta\\Form1.cs [Projekt]",
+              "RelativeToolTip": "karta\\Form1.cs [Projekt]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-18T07:11:23.529Z",
+              "EditorCaption": " [Projekt]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

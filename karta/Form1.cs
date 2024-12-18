@@ -8,23 +8,23 @@ namespace karta
 {
     public partial class Form1 : Form
     {
-        // Import PlaySound z winmm.dll
         [DllImport("winmm.dll", SetLastError = true)]
         private static extern bool PlaySound(string pszSound, IntPtr hmod, uint fdwSound);
 
-        private const uint SND_FILENAME = 0x00020000; // Flaga: odtwarzanie z pliku
+        private const uint SND_FILENAME = 0x00020000;
         private const uint SND_ASYNC = 0x0001;
         private string selectedFilePath = string.Empty;
 
-        private WaveInEvent waveIn;          // Nagrywanie za pomoc¹ mikrofonu
-        private WaveFileWriter waveWriter;   // Zapisywanie pliku WAV
-        private string outputFilePath;       // Œcie¿ka zapisu pliku WAV
+        private WaveInEvent waveIn;          
+        private WaveFileWriter waveWriterOriginal;   
+        private WaveFileWriter waveWriterFiltered;   
+        private string outputFilePath;       
 
-        private WaveOutEvent waveOut; // Globalna zmienna dla WaveOut
+        private WaveOutEvent waveOut; 
         private AudioFileReader audioFile;
 
-        private DirectSoundOut directSound; // Globalna zmienna dla DirectSound
-        private WindowsMediaPlayer activeXPlayer; // WindowsMediaPlayer dla ActiveX
+        private DirectSoundOut directSound; 
+        private WindowsMediaPlayer activeXPlayer; 
 
 
         public Form1()
@@ -36,14 +36,12 @@ namespace karta
         private void InitializeInputDevicesComboBox()
         {
 
-            // Wczytanie dostêpnych urz¹dzeñ wejœciowych
             for (int i = 0; i < WaveInEvent.DeviceCount; i++)
             {
                 var deviceInfo = WaveInEvent.GetCapabilities(i);
                 cmbInputDevices.Items.Add($"{i}: {deviceInfo.ProductName}");
             }
 
-            // Domyœlny wybór pierwszego urz¹dzenia
             if (cmbInputDevices.Items.Count > 0)
                 cmbInputDevices.SelectedIndex = 0;
 
@@ -55,21 +53,21 @@ namespace karta
         }
 
         private void btnChooseFile_Click(object sender, EventArgs e)
+{
+    using (OpenFileDialog openFileDialog = new OpenFileDialog())
+    {
+        openFileDialog.Filter = "Pliki audio (*.wav;*.mp3)|*.wav;*.mp3|Wszystkie pliki (*.*)|*.*";
+        openFileDialog.Title = "Wybierz plik audio";
+
+        if (openFileDialog.ShowDialog() == DialogResult.OK)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "Pliki audio (*.wav)|*.wav|Wszystkie pliki (*.*)|*.*"; // Filtr dla plików WAV
-                openFileDialog.Title = "Wybierz plik audio";
+            selectedFilePath = openFileDialog.FileName;
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    selectedFilePath = openFileDialog.FileName; // Zapis wybranej œcie¿ki
-                    MessageBox.Show($"Wybrano plik: {selectedFilePath}", "Plik wybrany", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
+            MessageBox.Show($"Wybrano plik: {selectedFilePath}", "Plik wybrany", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+    }
+}
 
-        // Obs³uga przycisku "PlaySound"
         private void btnPlaySound_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(selectedFilePath) && File.Exists(selectedFilePath))
@@ -77,21 +75,19 @@ namespace karta
                 bool result = PlaySound(selectedFilePath, IntPtr.Zero, SND_FILENAME | SND_ASYNC);
                 if (!result)
                 {
-                    MessageBox.Show("Nie uda³o siê odtworzyæ pliku!", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Nie uda³o siê odtworzyæ pliku", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Nie wybrano pliku lub plik nie istnieje!", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Nie wybrano pliku lub plik nie istnieje", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // Obs³uga przycisku "ActiveX"
         private void btnActiveX_Click(object sender, EventArgs e)
         {
             try
             {
-                // Zatrzymanie poprzedniego odtwarzania ActiveX
                 if (activeXPlayer != null)
                 {
                     activeXPlayer.controls.stop();
@@ -101,7 +97,7 @@ namespace karta
 
                 if (!string.IsNullOrEmpty(selectedFilePath) && File.Exists(selectedFilePath))
                 {
-                    activeXPlayer = new WindowsMediaPlayer(); // Tworzenie nowej instancji ActiveX
+                    activeXPlayer = new WindowsMediaPlayer(); 
                     activeXPlayer.URL = selectedFilePath;
                     activeXPlayer.controls.play();
                     MessageBox.Show("Odtwarzanie za pomoc¹ ActiveX rozpoczête.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -121,86 +117,6 @@ namespace karta
         {
             try
             {
-                if (!string.IsNullOrEmpty(selectedFilePath) && File.Exists(selectedFilePath))
-                {
-                    // Zatrzymanie poprzedniego odtwarzania, jeœli istnieje
-                    if (waveOut != null)
-                    {
-                        waveOut.Stop();
-                        waveOut.Dispose();
-                        audioFile.Dispose();
-                    }
-
-                    // Inicjalizacja WaveOut i odczytu pliku WAV
-                    audioFile = new AudioFileReader(selectedFilePath);
-                    waveOut = new WaveOutEvent();
-                    waveOut.Init(audioFile);
-
-                    // Rozpoczêcie odtwarzania
-                    waveOut.Play();
-                    MessageBox.Show("Odtwarzanie za pomoc¹ WaveOut rozpoczête!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Nie wybrano pliku lub plik nie istnieje!", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"B³¹d odtwarzania: {ex.Message}", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnDirectSound_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(selectedFilePath) && File.Exists(selectedFilePath))
-                {
-                    // Zatrzymanie poprzedniego odtwarzania, jeœli istnieje
-                    if (directSound != null)
-                    {
-                        directSound.Stop();
-                        directSound.Dispose();
-                        audioFile.Dispose();
-                    }
-
-                    // Inicjalizacja DirectSound i odczytu pliku WAV
-                    audioFile = new AudioFileReader(selectedFilePath);
-                    directSound = new DirectSoundOut();
-                    directSound.Init(audioFile);
-
-                    // Rozpoczêcie odtwarzania
-                    directSound.Play();
-                    MessageBox.Show("Odtwarzanie za pomoc¹ DirectSound rozpoczête!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Nie wybrano pliku lub plik nie istnieje!", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"B³¹d odtwarzania: {ex.Message}", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Zatrzymanie PlaySound
-                PlaySound(null, IntPtr.Zero, SND_ASYNC);
-
-                // Zatrzymanie ActiveX Player
-                if (activeXPlayer != null)
-                {
-                    activeXPlayer.controls.stop();
-                    activeXPlayer.close();
-                    activeXPlayer = null;
-                }
-
-                // Zatrzymanie WaveOut
                 if (waveOut != null)
                 {
                     waveOut.Stop();
@@ -208,7 +124,42 @@ namespace karta
                     waveOut = null;
                 }
 
-                // Zatrzymanie DirectSoundOut
+                if (!string.IsNullOrEmpty(selectedFilePath) && File.Exists(selectedFilePath))
+                {
+                    IWaveProvider waveProvider;
+
+                    if (Path.GetExtension(selectedFilePath).ToLower() == ".mp3")
+                    {
+                        waveProvider = new Mp3FileReader(selectedFilePath);
+                    }
+                    else
+                    {
+                        waveProvider = new AudioFileReader(selectedFilePath);
+                    }
+
+                    waveOut = new WaveOutEvent();
+                    waveOut.Init(waveProvider);
+                    waveOut.Play();
+
+                    MessageBox.Show("Odtwarzanie za pomoc¹ WaveOut rozpoczête.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Nie wybrano pliku lub plik nie istnieje!", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"B³¹d odtwarzania: {ex.Message}", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void btnDirectSound_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 if (directSound != null)
                 {
                     directSound.Stop();
@@ -216,7 +167,65 @@ namespace karta
                     directSound = null;
                 }
 
-                // Zwolnienie pliku audio
+                if (!string.IsNullOrEmpty(selectedFilePath) && File.Exists(selectedFilePath))
+                {
+                    IWaveProvider waveProvider;
+
+                    if (Path.GetExtension(selectedFilePath).ToLower() == ".mp3")
+                    {
+                        waveProvider = new Mp3FileReader(selectedFilePath);
+                    }
+                    else
+                    {
+                        waveProvider = new AudioFileReader(selectedFilePath); 
+                    }
+
+                    directSound = new DirectSoundOut();
+                    directSound.Init(waveProvider);
+                    directSound.Play();
+
+                    MessageBox.Show("Odtwarzanie za pomoc¹ DirectSound rozpoczête.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Nie wybrano pliku lub plik nie istnieje!", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"B³¹d odtwarzania: {ex.Message}", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PlaySound(null, IntPtr.Zero, SND_ASYNC);
+
+                if (activeXPlayer != null)
+                {
+                    activeXPlayer.controls.stop();
+                    activeXPlayer.close();
+                    activeXPlayer = null;
+                }
+
+                if (waveOut != null)
+                {
+                    waveOut.Stop();
+                    waveOut.Dispose();
+                    waveOut = null;
+                }
+
+                if (directSound != null)
+                {
+                    directSound.Stop();
+                    directSound.Dispose();
+                    directSound = null;
+                }
+
                 if (audioFile != null)
                 {
                     audioFile.Dispose();
@@ -253,7 +262,6 @@ namespace karta
                         short blockAlign = reader.ReadInt16();                // Rozmiar bloku
                         short bitsPerSample = reader.ReadInt16();             // Bity na próbkê
 
-                        // Wyœwietlenie wyników w TextBox
                         txtWavHeader.Text = $"Chunk ID: {chunkID}\r\n" +
                                             $"Chunk Size: {chunkSize}\r\n" +
                                             $"Format: {format}\r\n" +
@@ -278,43 +286,68 @@ namespace karta
             }
         }
 
+        private void btnReadMp3Header_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(selectedFilePath) && File.Exists(selectedFilePath) && Path.GetExtension(selectedFilePath).ToLower() == ".mp3")
+                {
+                    using (var mp3Reader = new Mp3FileReader(selectedFilePath))
+                    {
+                        var mp3Header = mp3Reader.Mp3WaveFormat;
+                        var duration = mp3Reader.TotalTime;
+
+                        txtWavHeader.Text = $"MP3 Header Info:\r\n" +
+                                            $"Format: {mp3Header.Encoding}\r\n" +
+                                            $"Channels: {mp3Header.Channels}\r\n" +
+                                            $"Sample Rate: {mp3Header.SampleRate} Hz\r\n" +
+                                            $"Bit Rate: {mp3Header.AverageBytesPerSecond * 8 / 1000} kbps\r\n" +
+                                            $"Duration: {duration}";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Plik MP3 nie zosta³ wybrany lub nie istnieje!", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"B³¹d odczytu nag³ówka MP3: {ex.Message}", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
         private void btnStartRecording_Click(object sender, EventArgs e)
         {
             try
             {
-                // Sprawdzenie czy wybrano urz¹dzenie
-                if (cmbInputDevices.SelectedIndex < 0)
-                {
-                    MessageBox.Show("Wybierz urz¹dzenie wejœciowe!", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                string originalFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "recorded_original.wav");
+                string filteredFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "recorded_with_pitch_filter.wav");
 
-                // Œcie¿ka do zapisu pliku WAV
-                outputFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "recorded.wav");
-
-                // Konfiguracja nagrywania
                 waveIn = new WaveInEvent();
-                waveIn.DeviceNumber = cmbInputDevices.SelectedIndex; // Wybór urz¹dzenia z ComboBox
-                waveIn.WaveFormat = new WaveFormat(44100, 1); // 44.1 kHz, mono
+                waveIn.WaveFormat = new WaveFormat(44100, 1);
 
-                waveWriter = new WaveFileWriter(outputFilePath, waveIn.WaveFormat);
-
-                // Zdarzenia nagrywania
                 waveIn.DataAvailable += (s, a) =>
                 {
-                    waveWriter.Write(a.Buffer, 0, a.BytesRecorded);
+                    waveWriterOriginal.Write(a.Buffer, 0, a.BytesRecorded);
+
+                    byte[] processedBuffer = ApplyLowerPitch(a.Buffer, a.BytesRecorded, waveIn.WaveFormat);
+                    waveWriterFiltered.Write(processedBuffer, 0, processedBuffer.Length);
                 };
 
                 waveIn.RecordingStopped += (s, a) =>
                 {
-                    waveWriter?.Dispose();
+                    waveWriterOriginal?.Dispose();
+                    waveWriterFiltered?.Dispose();
                     waveIn.Dispose();
-                    MessageBox.Show($"Nagrywanie zakoñczone. Plik zapisano w: {outputFilePath}", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Nagrywanie zakoñczone. Pliki zapisano:\n{originalFilePath}\n{filteredFilePath}", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 };
 
-                // Rozpoczêcie nagrywania
+                waveWriterOriginal = new WaveFileWriter(originalFilePath, waveIn.WaveFormat);
+                waveWriterFiltered = new WaveFileWriter(filteredFilePath, waveIn.WaveFormat);
+
                 waveIn.StartRecording();
-                MessageBox.Show("Rozpoczêto nagrywanie...", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Rozpoczêto nagrywanie.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -322,6 +355,21 @@ namespace karta
             }
         }
 
+        private byte[] ApplyLowerPitch(byte[] buffer, int bytesRecorded, WaveFormat format)
+        {
+            WaveBuffer waveBuffer = new WaveBuffer(buffer);
+            int samples = bytesRecorded / 2;
+            List<short> filteredSamples = new List<short>();
+
+            for (int i = 0; i < samples; i += 2)
+            {
+                filteredSamples.Add(waveBuffer.ShortBuffer[i]);
+            }
+
+            byte[] processedBuffer = new byte[filteredSamples.Count * 2];
+            Buffer.BlockCopy(filteredSamples.ToArray(), 0, processedBuffer, 0, processedBuffer.Length);
+            return processedBuffer;
+        }
 
         private void btnStopRecording_Click(object sender, EventArgs e)
         {
@@ -329,10 +377,13 @@ namespace karta
             {
                 waveIn.StopRecording();
             }
-            else
-            {
-                MessageBox.Show("Nagrywanie nie zosta³o rozpoczête!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+        }
+
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -40,16 +40,17 @@
             btnStopRecording = new Button();
             btnChooseFile = new Button();
             txtWavHeader = new TextBox();
-            label4 = new Label();
             cmbInputDevices = new ComboBox();
             btnStop = new Button();
+            btnReadMp3Header = new Button();
             SuspendLayout();
             // 
             // btnPlaySound
             // 
-            btnPlaySound.Location = new Point(16, 49);
+            btnPlaySound.Location = new Point(18, 65);
+            btnPlaySound.Margin = new Padding(3, 4, 3, 4);
             btnPlaySound.Name = "btnPlaySound";
-            btnPlaySound.Size = new Size(99, 25);
+            btnPlaySound.Size = new Size(113, 33);
             btnPlaySound.TabIndex = 0;
             btnPlaySound.Text = "PlaySound";
             btnPlaySound.UseVisualStyleBackColor = true;
@@ -57,9 +58,10 @@
             // 
             // btnActiveX
             // 
-            btnActiveX.Location = new Point(16, 80);
+            btnActiveX.Location = new Point(137, 65);
+            btnActiveX.Margin = new Padding(3, 4, 3, 4);
             btnActiveX.Name = "btnActiveX";
-            btnActiveX.Size = new Size(99, 25);
+            btnActiveX.Size = new Size(113, 33);
             btnActiveX.TabIndex = 1;
             btnActiveX.Text = "ActiveX";
             btnActiveX.UseVisualStyleBackColor = true;
@@ -67,9 +69,10 @@
             // 
             // btnWaveOut
             // 
-            btnWaveOut.Location = new Point(16, 111);
+            btnWaveOut.Location = new Point(256, 65);
+            btnWaveOut.Margin = new Padding(3, 4, 3, 4);
             btnWaveOut.Name = "btnWaveOut";
-            btnWaveOut.Size = new Size(99, 25);
+            btnWaveOut.Size = new Size(113, 33);
             btnWaveOut.TabIndex = 2;
             btnWaveOut.Text = "WaveOut";
             btnWaveOut.UseVisualStyleBackColor = true;
@@ -77,9 +80,10 @@
             // 
             // btnDirectSound
             // 
-            btnDirectSound.Location = new Point(16, 142);
+            btnDirectSound.Location = new Point(375, 65);
+            btnDirectSound.Margin = new Padding(3, 4, 3, 4);
             btnDirectSound.Name = "btnDirectSound";
-            btnDirectSound.Size = new Size(99, 25);
+            btnDirectSound.Size = new Size(113, 33);
             btnDirectSound.TabIndex = 3;
             btnDirectSound.Text = "DirectSound";
             btnDirectSound.UseVisualStyleBackColor = true;
@@ -88,48 +92,50 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(16, 22);
+            label1.Location = new Point(18, 29);
             label1.Name = "label1";
-            label1.Size = new Size(73, 15);
+            label1.Size = new Size(93, 20);
             label1.TabIndex = 4;
             label1.Text = "Odtwarzanie";
             label1.Click += label1_Click;
             // 
             // btnReadWavHeader
             // 
-            btnReadWavHeader.Location = new Point(16, 243);
+            btnReadWavHeader.Location = new Point(18, 262);
+            btnReadWavHeader.Margin = new Padding(3, 4, 3, 4);
             btnReadWavHeader.Name = "btnReadWavHeader";
             btnReadWavHeader.RightToLeft = RightToLeft.No;
-            btnReadWavHeader.Size = new Size(99, 25);
+            btnReadWavHeader.Size = new Size(204, 33);
             btnReadWavHeader.TabIndex = 5;
-            btnReadWavHeader.Text = "WAV";
+            btnReadWavHeader.Text = "Nagłówek Wav";
             btnReadWavHeader.UseVisualStyleBackColor = true;
             btnReadWavHeader.Click += btnReadWavHeader_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(13, 225);
+            label2.Location = new Point(18, 238);
             label2.Name = "label2";
-            label2.Size = new Size(76, 15);
+            label2.Size = new Size(96, 20);
             label2.TabIndex = 6;
             label2.Text = "Wyświetlanie";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(16, 290);
+            label3.Location = new Point(19, 127);
             label3.Name = "label3";
-            label3.Size = new Size(70, 15);
+            label3.Size = new Size(88, 20);
             label3.TabIndex = 7;
             label3.Text = "Nagrywanie";
             // 
             // btnStartRecording
             // 
-            btnStartRecording.Location = new Point(16, 337);
+            btnStartRecording.Location = new Point(168, 151);
+            btnStartRecording.Margin = new Padding(3, 4, 3, 4);
             btnStartRecording.Name = "btnStartRecording";
             btnStartRecording.RightToLeft = RightToLeft.No;
-            btnStartRecording.Size = new Size(99, 25);
+            btnStartRecording.Size = new Size(113, 33);
             btnStartRecording.TabIndex = 8;
             btnStartRecording.Text = "Start";
             btnStartRecording.UseVisualStyleBackColor = true;
@@ -137,10 +143,11 @@
             // 
             // btnStopRecording
             // 
-            btnStopRecording.Location = new Point(16, 368);
+            btnStopRecording.Location = new Point(168, 192);
+            btnStopRecording.Margin = new Padding(3, 4, 3, 4);
             btnStopRecording.Name = "btnStopRecording";
             btnStopRecording.RightToLeft = RightToLeft.No;
-            btnStopRecording.Size = new Size(99, 25);
+            btnStopRecording.Size = new Size(113, 33);
             btnStopRecording.TabIndex = 9;
             btnStopRecording.Text = "Stop";
             btnStopRecording.UseVisualStyleBackColor = true;
@@ -148,9 +155,10 @@
             // 
             // btnChooseFile
             // 
-            btnChooseFile.Location = new Point(132, 15);
+            btnChooseFile.Location = new Point(137, 20);
+            btnChooseFile.Margin = new Padding(3, 4, 3, 4);
             btnChooseFile.Name = "btnChooseFile";
-            btnChooseFile.Size = new Size(126, 28);
+            btnChooseFile.Size = new Size(144, 37);
             btnChooseFile.TabIndex = 10;
             btnChooseFile.Text = "Wybierz plik audio";
             btnChooseFile.UseVisualStyleBackColor = true;
@@ -158,49 +166,55 @@
             // 
             // txtWavHeader
             // 
-            txtWavHeader.Location = new Point(157, 147);
+            txtWavHeader.Location = new Point(18, 316);
+            txtWavHeader.Margin = new Padding(3, 4, 3, 4);
             txtWavHeader.Multiline = true;
             txtWavHeader.Name = "txtWavHeader";
             txtWavHeader.ReadOnly = true;
             txtWavHeader.ScrollBars = ScrollBars.Vertical;
-            txtWavHeader.Size = new Size(187, 246);
+            txtWavHeader.Size = new Size(414, 251);
             txtWavHeader.TabIndex = 10;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(157, 127);
-            label4.Name = "label4";
-            label4.Size = new Size(88, 15);
-            label4.TabIndex = 12;
-            label4.Text = "Nagłówek WAV";
             // 
             // cmbInputDevices
             // 
             cmbInputDevices.FormattingEnabled = true;
-            cmbInputDevices.Location = new Point(16, 308);
+            cmbInputDevices.Location = new Point(19, 172);
+            cmbInputDevices.Margin = new Padding(3, 4, 3, 4);
             cmbInputDevices.Name = "cmbInputDevices";
-            cmbInputDevices.Size = new Size(121, 23);
+            cmbInputDevices.Size = new Size(138, 28);
             cmbInputDevices.TabIndex = 13;
             // 
             // btnStop
             // 
-            btnStop.Location = new Point(16, 173);
+            btnStop.Location = new Point(494, 65);
+            btnStop.Margin = new Padding(3, 4, 3, 4);
             btnStop.Name = "btnStop";
-            btnStop.Size = new Size(99, 25);
+            btnStop.Size = new Size(113, 33);
             btnStop.TabIndex = 14;
             btnStop.Text = "Stop";
             btnStop.UseVisualStyleBackColor = true;
             btnStop.Click += btnStop_Click;
             // 
+            // btnReadMp3Header
+            // 
+            btnReadMp3Header.Location = new Point(228, 262);
+            btnReadMp3Header.Margin = new Padding(3, 4, 3, 4);
+            btnReadMp3Header.Name = "btnReadMp3Header";
+            btnReadMp3Header.RightToLeft = RightToLeft.No;
+            btnReadMp3Header.Size = new Size(204, 33);
+            btnReadMp3Header.TabIndex = 15;
+            btnReadMp3Header.Text = "Nagłówek Mp3";
+            btnReadMp3Header.UseVisualStyleBackColor = true;
+            btnReadMp3Header.Click += btnReadMp3Header_Click;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
+            Controls.Add(btnReadMp3Header);
             Controls.Add(btnStop);
             Controls.Add(cmbInputDevices);
-            Controls.Add(label4);
             Controls.Add(txtWavHeader);
             Controls.Add(btnChooseFile);
             Controls.Add(btnStopRecording);
@@ -213,8 +227,10 @@
             Controls.Add(btnWaveOut);
             Controls.Add(btnActiveX);
             Controls.Add(btnPlaySound);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -233,8 +249,8 @@
         private Button btnStopRecording;
         private Button btnChooseFile;
         private TextBox txtWavHeader;
-        private Label label4;
         private ComboBox cmbInputDevices;
         private Button btnStop;
+        private Button btnReadMp3Header;
     }
 }

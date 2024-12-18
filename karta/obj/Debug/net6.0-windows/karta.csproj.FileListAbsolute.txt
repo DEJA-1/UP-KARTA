@@ -36,3 +36,42 @@ D:\Microsoft Visual Studio\projects\karta\karta\bin\Debug\net6.0-windows\NAudio.
 D:\Microsoft Visual Studio\projects\karta\karta\bin\Debug\net6.0-windows\NAudio.WinMM.dll
 D:\Microsoft Visual Studio\projects\karta\karta\obj\Debug\net6.0-windows\karta.csproj.AssemblyReference.cache
 D:\Microsoft Visual Studio\projects\karta\karta\obj\Debug\net6.0-windows\karta.csproj.Up2Date
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\karta.exe
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\karta.deps.json
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\karta.runtimeconfig.json
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\karta.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\karta.pdb
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\NAudio.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\NAudio.Asio.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\NAudio.Core.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\NAudio.Midi.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\NAudio.Wasapi.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\NAudio.WinForms.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\NAudio.WinMM.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\Interop.WMPLib.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\bin\Debug\net6.0-windows\AxInterop.WMPLib.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\karta.csproj.AssemblyReference.cache
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\Interop.WMPNSSCI.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\Interop.WMPNSSCDS.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\Interop.WMLSS.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\Interop.WMPLib.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\Interop.WMPDXMLib.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\Interop.WMPLauncher.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\Interop.MediaPlayer.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\Interop.DXTRANSLib.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\Interop.DXTMSFTLib.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\AxInterop.WMPLib.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\karta.csproj.ResolveComReference.cache
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\karta.Form1.resources
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\karta.csproj.GenerateResource.cache
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\karta.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\karta.AssemblyInfoInputs.cache
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\karta.AssemblyInfo.cs
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\karta.csproj.CoreCompileInputs.cache
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\karta.sourcelink.json
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\karta.csproj.Up2Date
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\karta.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\refint\karta.dll
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\karta.pdb
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\karta.genruntimeconfig.cache
+C:\Users\allow\Source\Repos\UP-KARTA\karta\obj\Debug\net6.0-windows\ref\karta.dll

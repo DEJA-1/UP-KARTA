@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Microsoft Visual Studio\\projects\\karta\\karta\\karta.csproj": {}
+    "C:\\Users\\allow\\Source\\Repos\\UP-KARTA\\karta\\karta.csproj": {}
   },
   "projects": {
-    "D:\\Microsoft Visual Studio\\projects\\karta\\karta\\karta.csproj": {
+    "C:\\Users\\allow\\Source\\Repos\\UP-KARTA\\karta\\karta.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Microsoft Visual Studio\\projects\\karta\\karta\\karta.csproj",
+        "projectUniqueName": "C:\\Users\\allow\\Source\\Repos\\UP-KARTA\\karta\\karta.csproj",
         "projectName": "karta",
-        "projectPath": "D:\\Microsoft Visual Studio\\projects\\karta\\karta\\karta.csproj",
-        "packagesPath": "C:\\Users\\Krzysiek\\.nuget\\packages\\",
-        "outputPath": "D:\\Microsoft Visual Studio\\projects\\karta\\karta\\obj\\",
+        "projectPath": "C:\\Users\\allow\\Source\\Repos\\UP-KARTA\\karta\\karta.csproj",
+        "packagesPath": "C:\\Users\\allow\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\allow\\Source\\Repos\\UP-KARTA\\karta\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Krzysiek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\allow\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
